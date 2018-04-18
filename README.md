@@ -26,9 +26,10 @@ $PROJECT/data/raw_data/yelp_academic_dataset_user.json
 
 #### add nltk support 
 Run the Python interpreter and type the commands:
-
+```python
 >>> import nltk
 >>> nltk.download()
+```
 A new window should open, showing the NLTK Downloader. Click on the File menu and select Change Download Directory. For central installation, set this to C:\nltk_data (Windows), /usr/local/share/nltk_data (Mac), or /usr/share/nltk_data (Unix). Next, select the packages or collections you want to download.
 
 
