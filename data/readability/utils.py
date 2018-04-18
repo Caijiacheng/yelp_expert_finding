@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+
 """
 utility functions for breaking down a given block of text
 into it's component syntactic parts.

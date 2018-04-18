@@ -1,6 +1,8 @@
 """
 General utilities for working with Python data structures, NetworkX graphs, etc.
 """
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
 import random
 from collections import Counter, defaultdict, OrderedDict
 

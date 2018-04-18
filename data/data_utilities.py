@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+
 """
 Utilities specifically for the data processing scripts and data interfaces.
 """
@@ -32,13 +35,15 @@ BASIC_USER_ATTRIBUTES_AND_EXTRACTORS = [
 	( 'ID', lambda raw_user: raw_user['user_id'] ),
 	( 'review_count', lambda raw_user: raw_user['review_count'] ),
 	( 'average_stars', lambda raw_user: raw_user['average_stars'] ),
-	( 'funny_vote_count', lambda raw_user: raw_user['votes']['funny'] ),
-	( 'useful_vote_count', lambda raw_user: raw_user['votes']['useful'] ),
-	( 'cool_vote_count', lambda raw_user: raw_user['votes']['cool'] ),
+	( 'funny_vote_count', lambda raw_user: raw_user['funny'] ),
+	( 'useful_vote_count', lambda raw_user: raw_user['useful'] ),
+	( 'cool_vote_count', lambda raw_user: raw_user['cool'] ),
 	( 'friend_count', lambda raw_user: len(raw_user['friends']) ),
 	( 'years_elite', lambda raw_user: len(raw_user['elite']) ),
 	( 'months_member', lambda raw_user: _months_since_year_and_month(raw_user['yelping_since']) ),
-	( 'compliment_count', lambda raw_user: sum(raw_user['compliments'].itervalues()) ),
+	# ( 'compliment_count', lambda raw_user: sum(raw_user['compliments'].itervalues()) ),
+	( 'compliment_count', lambda raw_user: sum(map(lambda t : raw_user[t],
+                                                   filter(lambda u : u.startswith("compliments"), raw_user.keys())))),
 	( 'fan_count', lambda raw_user: raw_user['fans'] ),
 ]
 
@@ -79,7 +84,7 @@ CASTER_FOR_ATTRIBUTE_NAME = {
 
 def _months_since_year_and_month(year_month_string):
 	"""Returns the number of months' difference between now and a month formatted as YYYY-MM."""
-	year, month = map(int, year_month_string.split('-'))
+	year, month, day = map(int, year_month_string.split('-'))
 	return 12 * (CURRENT_YEAR - year) - month + CURRENT_MONTH
 
 

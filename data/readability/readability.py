@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+# -*- coding: UTF-8 -*-
 import math
 
 from utils import get_char_count

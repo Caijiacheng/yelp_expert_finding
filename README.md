@@ -16,12 +16,21 @@ pip install -r requirements.txt
 
 Download the [Yelp Dataset Challenge](http://www.yelp.com/dataset_challenge/) data. Extract its contents into a new folder `/data/raw_data/`, so that we have:
 ```
-/data/raw_data/yelp_academic_dataset_business.json
-/data/raw_data/yelp_academic_dataset_checkin.json
-/data/raw_data/yelp_academic_dataset_review.json
-/data/raw_data/yelp_academic_dataset_tip.json
-/data/raw_data/yelp_academic_dataset_user.json
+$PROJECT/data/raw_data/yelp_academic_dataset_business.json
+$PROJECT/data/raw_data/yelp_academic_dataset_checkin.json
+$PROJECT/data/raw_data/yelp_academic_dataset_review.json
+$PROJECT/data/raw_data/yelp_academic_dataset_tip.json
+$PROJECT/data/raw_data/yelp_academic_dataset_user.json
 ```
+
+
+#### add nltk support 
+Run the Python interpreter and type the commands:
+
+>>> import nltk
+>>> nltk.download()
+A new window should open, showing the NLTK Downloader. Click on the File menu and select Change Download Directory. For central installation, set this to C:\nltk_data (Windows), /usr/local/share/nltk_data (Mac), or /usr/share/nltk_data (Unix). Next, select the packages or collections you want to download.
+
 
 
 #### Extract Features
@@ -81,10 +90,21 @@ Suppose we wish to test our random forest model. In the same Python shell, execu
 #### Visualize Social Network Properties
 Open a Python shell from the project root and execute:
 ```python
->>> from analysis.user_graph_analysis.py import *
+>>> from analysis.user_graph_analysis import *
 >>> analyze_user_graph(
-        show_degree_histogram=True
+        show_degree_histogram=True,
         show_pagerank_histogram=True
     )
 ```
 
+
+
+
+#### NOTE
+
+1. how to trim data to make process_data faster?
+```
+    $ mv $PROJECT/data/raw_data/xxx.json $PROJECT/data/raw_data/xxx.json.bak
+    $ cat $PROJECT/data/raw_data/xxx.json.bak | head -10000 > $PROJECT/data/raw_data/xxx.json
+    
+```

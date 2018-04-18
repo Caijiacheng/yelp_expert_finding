@@ -82,6 +82,7 @@ def train_and_validate_elite_status_classifier(ModelClass, attributes, model_arg
 	print combined_confusion_matrix
 	print '\nClassification Report'
 	print classification_report(combined_y_test, combined_y_predict, labels=[1,0], target_names=['Elite', 'Non-Elite'], digits=3)
+	return model
 
 
 def test_elite_status_classifier(ModelClass, attributes, model_arguments={}, balance_training_set=True, balance_test_set=True):
